@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:${MYSQL_VERSION}
+    environment:
+      - 'MYSQL_DATABASE=${DB_NAME}'
+      - 'MYSQL_USER=${DB_USER}'
+      - 'MYSQL_PASSWORD=${DB_PASSWORD}'
+      - 'MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}'
+    volumes:
+      - '${DATA_PATH_HOST}:/var/lib/mysql'
+    ports:
+      - ${MYSQL_PORT}:3306
+
+  phpmyadmin:
+    image: phpmyadmin:${PMA_VERSION}
+    environment:
+      - 'PMA_ARBITRARY=1'
+      - 'MYSQL_USER=${DB_USER}'
+      - 'MYSQL_PASSWORD=${DB_PASSWORD}'
+      - 'MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}'
+    ports:
+      - '${PMA_PORT}:80'
