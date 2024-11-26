@@ -1,0 +1,27 @@
+#User defined
+user:
+  mysql_version:
+    label:
+      MySQL version
+    hint:
+      Select MySQL version
+    type:
+      select
+    values:
+      - 5.7
+      - 8
+    target:
+      MYSQL_VERSION
+
+#System defaults
+system:
+  db_credentials:
+    true
+  #Generate public ports for the docker image
+  ports:
+    http:
+      PMA_PORT
+    others:
+      - MYSQL_PORT
+
+
