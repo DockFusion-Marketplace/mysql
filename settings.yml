@@ -8,10 +8,25 @@ user:
     type:
       select
     values:
-      - 5.7
-      - 8
+      - "5.7"
+      - "8"
+      - "8.4.4"
+      - "9.2"
     target:
       MYSQL_VERSION
+
+  php_my_admin_version:
+    label:
+      PHP my admin version
+    hint:
+      Select PHP my admin version
+    type:
+      select
+    values:
+      - "5.0"
+      - "5.2.2"
+    target:
+      PHP_MY_ADMIN_VERSION
 
 #System defaults
 system:

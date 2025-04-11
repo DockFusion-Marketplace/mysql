@@ -1,7 +1,8 @@
-version: '3'
 services:
   mysql:
-    image: ghcr.io/deck-app/mysql:${MYSQL_VERSION}
+    build:
+      context: './mysql'
+      dockerfile: 'Dockerfile'
     environment:
       - 'MYSQL_DATABASE=${DB_NAME}'
       - 'MYSQL_USER=${DB_USER}'
@@ -13,9 +14,14 @@ services:
       - ${MYSQL_PORT}:3306
 
   phpmyadmin:
-    image: ghcr.io/deck-app/phpmyadmin:5
+    build:
+      context: './phpmyadmin'
+      dockerfile: 'Dockerfile'
     environment:
-      - 'PMA_ARBITRARY=1'
+      - 'PMA_ARBITRARY=0'
+      - 'PMA_HOST=${CONTAINER_PREFIX}-mysql-1'
+      - 'PMA_USER=${DB_USER}'
+      - 'PMA_PASSWORD=${DB_PASSWORD}'
       - 'MYSQL_USER=${DB_USER}'
       - 'MYSQL_PASSWORD=${DB_PASSWORD}'
       - 'MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}'
