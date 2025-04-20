@@ -3,8 +3,8 @@ This template provides a MySQL database service along with phpMyAdmin, a web-bas
 
 ## 🚀 What's Included
 
-- MySQL — Database service
-- phpMyAdmin — Web-based MySQL management
+- MySQL (5.7+) — Database service
+- phpMyAdmin (5.0+) — Web-based MySQL management
 
 ## 📦 Requirements
 - [Docker](https://www.docker.com)
